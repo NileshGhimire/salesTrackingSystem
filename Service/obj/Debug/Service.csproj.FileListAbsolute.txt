@@ -1,0 +1,17 @@
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\Service.dll.config
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\Service.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\Service.pdb
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\DAL.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\EntityFramework.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\Model.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\DAL.pdb
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\DAL.dll.config
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\Model.pdb
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\EntityFramework.xml
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\obj\Debug\Service.csprojAssemblyReference.cache
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\obj\Debug\Service.csproj.CopyComplete
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\obj\Debug\Service.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Service\obj\Debug\Service.pdb

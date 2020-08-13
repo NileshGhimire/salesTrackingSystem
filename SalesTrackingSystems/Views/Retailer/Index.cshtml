@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Model.RetailerModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Retailer_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetailerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distributor_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retailer_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetailerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distributor_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adress_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Retailer_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Retailer_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Retailer_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesTrackingSystemsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adress">
+    <Key>
+      <PropertyRef Name="Adress_ID" />
+    </Key>
+    <Property Name="Adress_ID" Type="int" Nullable="false" />
+    <Property Name="AdressName" Type="varchar" MaxLength="50" />
+    <Property Name="StatesName" Type="varchar" MaxLength="50" />
+    <Property Name="DistrictName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Distributor">
+    <Key>
+      <PropertyRef Name="Distributor_ID" />
+    </Key>
+    <Property Name="Distributor_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistributorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adress_ID" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="int" Nullable="false" />
+    <Property Name="MobileNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductCategory_ID" Type="int" Nullable="false" />
+    <Property Name="UnitRate" Type="int" Nullable="false" />
+    <Property Name="PackRate" Type="int" Nullable="false" />
+    <Property Name="PackSize" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategory_ID" />
+    </Key>
+    <Property Name="ProductCategory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Retailer">
+    <Key>
+      <PropertyRef Name="Retailer_ID" />
+    </Key>
+    <Property Name="Retailer_ID" Type="int" Nullable="false" />
+    <Property Name="RetailerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Distributor_ID" Type="int" Nullable="false" />
+    <Property Name="Adress_ID" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="int" Nullable="false" />
+    <Property Name="MobileNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Distributor_Adress">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Adress_ID" />
+      </Principal>
+      <Dependent Role="Distributor">
+        <PropertyRef Name="Adress_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Retailer_Adress">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Retailer" Type="Self.Retailer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Adress_ID" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="Adress_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Retailer_Distributor">
+    <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+    <End Role="Retailer" Type="Self.Retailer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distributor">
+        <PropertyRef Name="Distributor_ID" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="Distributor_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SalesTrackingSystemsModelStoreContainer">
+    <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distributor" EntityType="Self.Distributor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Retailer" EntityType="Self.Retailer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Distributor_Adress" Association="Self.FK_Distributor_Adress">
+      <End Role="Adress" EntitySet="Adress" />
+      <End Role="Distributor" EntitySet="Distributor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retailer_Adress" Association="Self.FK_Retailer_Adress">
+      <End Role="Adress" EntitySet="Adress" />
+      <End Role="Retailer" EntitySet="Retailer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retailer_Distributor" Association="Self.FK_Retailer_Distributor">
+      <End Role="Distributor" EntitySet="Distributor" />
+      <End Role="Retailer" EntitySet="Retailer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

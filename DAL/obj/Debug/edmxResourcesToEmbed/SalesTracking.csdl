@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesTrackingSystemsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adress">
+    <Key>
+      <PropertyRef Name="Adress_ID" />
+    </Key>
+    <Property Name="Adress_ID" Type="Int32" Nullable="false" />
+    <Property Name="AdressName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_Adress" FromRole="Adress" ToRole="Distributor" />
+    <NavigationProperty Name="Retailers" Relationship="Self.FK_Retailer_Adress" FromRole="Adress" ToRole="Retailer" />
+  </EntityType>
+  <EntityType Name="Distributor">
+    <Key>
+      <PropertyRef Name="Distributor_ID" />
+    </Key>
+    <Property Name="Distributor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistributorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adress_ID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
+    <Property Name="MobileNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adress" Relationship="Self.FK_Distributor_Adress" FromRole="Distributor" ToRole="Adress" />
+    <NavigationProperty Name="Retailers" Relationship="Self.FK_Retailer_Distributor" FromRole="Distributor" ToRole="Retailer" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductCategory_ID" Type="Int32" Nullable="false" />
+    <Property Name="UnitRate" Type="Int32" Nullable="false" />
+    <Property Name="PackRate" Type="Int32" Nullable="false" />
+    <Property Name="PackSize" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategory_ID" />
+    </Key>
+    <Property Name="ProductCategory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Retailer">
+    <Key>
+      <PropertyRef Name="Retailer_ID" />
+    </Key>
+    <Property Name="Retailer_ID" Type="Int32" Nullable="false" />
+    <Property Name="RetailerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Distributor_ID" Type="Int32" Nullable="false" />
+    <Property Name="Adress_ID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
+    <Property Name="MobileNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adress" Relationship="Self.FK_Retailer_Adress" FromRole="Retailer" ToRole="Adress" />
+    <NavigationProperty Name="Distributor" Relationship="Self.FK_Retailer_Distributor" FromRole="Retailer" ToRole="Distributor" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Distributor_Adress">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Adress_ID" />
+      </Principal>
+      <Dependent Role="Distributor">
+        <PropertyRef Name="Adress_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Retailer_Adress">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Retailer" Type="Self.Retailer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Adress_ID" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="Adress_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Retailer_Distributor">
+    <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+    <End Role="Retailer" Type="Self.Retailer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distributor">
+        <PropertyRef Name="Distributor_ID" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="Distributor_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SalesTrackingSystemsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adresses" EntityType="Self.Adress" />
+    <EntitySet Name="Distributors" EntityType="Self.Distributor" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+    <EntitySet Name="Retailers" EntityType="Self.Retailer" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Distributor_Adress" Association="Self.FK_Distributor_Adress">
+      <End Role="Adress" EntitySet="Adresses" />
+      <End Role="Distributor" EntitySet="Distributors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retailer_Adress" Association="Self.FK_Retailer_Adress">
+      <End Role="Adress" EntitySet="Adresses" />
+      <End Role="Retailer" EntitySet="Retailers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retailer_Distributor" Association="Self.FK_Retailer_Distributor">
+      <End Role="Distributor" EntitySet="Distributors" />
+      <End Role="Retailer" EntitySet="Retailers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

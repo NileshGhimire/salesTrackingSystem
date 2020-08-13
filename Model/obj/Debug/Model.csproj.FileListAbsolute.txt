@@ -1,0 +1,6 @@
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\bin\Debug\Model.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\bin\Debug\Model.pdb
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\obj\Debug\Model.dll
+C:\Users\Nilesh\source\repos\SalesTrackingSystems\Model\obj\Debug\Model.pdb

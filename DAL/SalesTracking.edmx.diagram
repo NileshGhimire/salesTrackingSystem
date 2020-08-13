@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="248c72c8e49847878b6a517220596471" Name="Diagram1">
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.Adress" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.Distributor" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.Product" Width="1.5" PointX="5.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.ProductCategory" Width="1.5" PointX="2.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.Retailer" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesTrackingSystemsModel.sysdiagram" Width="1.5" PointX="7.375" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="SalesTrackingSystemsModel.FK_Distributor_Adress" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesTrackingSystemsModel.FK_Retailer_Adress" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesTrackingSystemsModel.FK_Retailer_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesTrackingSystemsModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
